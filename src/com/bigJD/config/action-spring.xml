@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    	 http://www.springframework.org/schema/beans/spring-beans.xsd
+     	 http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/tx
+     	 http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<!-- product -->
+	<bean id="userAction" class="com.bigJD.user.action.UserAction" scope="prototype">
+		<property name="userService" ref="userService" />
+	</bean>
+	<bean id="productAction" class="com.bigJD.product.action.ProductAction" scope="prototype">
+		<property name="userService" ref="userService"/>
+		<property name="productService" ref="productServlce"/>
+	</bean>
+
+	<bean id="cartAction" class="com.bigJD.cart.action.CartAction" scope="prototype">
+		<property name="cartService" ref="cartService" />
+		<property name="userService" ref="userService" />
+	</bean>
+	<bean id="orderAction" class="com.bigJD.order.action.OrderAction" scope="prototype">
+		<property name="orderService" ref="orderService" />
+		<property name="cartService" ref="cartService" />
+	</bean>
+	<bean id="footPrintAction" class="com.bigJD.others.action.FootPrintAction" scope="prototype">
+		<property name="footPrintService" ref="footPrintService" />
+	</bean>
+	<bean id="keyWordAction" class="com.bigJD.others.action.KeyWordAction" scope="prototype">
+		<property name="keyWordService" ref="keyWordService" />
+	</bean>
+	<bean id="collectAction" class="com.bigJD.others.action.CollectAction" scope="prototype">
+		<property name="collectService" ref="collectService" />
+		<property name="footPrintService" ref="footPrintService"/>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+

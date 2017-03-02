@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.bigJD.order.entity">
+    <class name="Order" table="t_order">
+        <id name="id" type="integer">
+            <column name="order_id"/>
+            <generator class="native"/>
+        </id>
+        <property name="orderNumber" type="string">
+            <column name="order_number" />
+        </property>
+        <property name="consigneeName" type="string">
+            <column name="consignee_name" />
+        </property>
+        <property name="tell" type="string">
+            <column name="tell" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" />
+        </property>
+        <property name="finishTime" type="timestamp">
+            <column name="finish_time" sql-type="datetime"/>
+        </property>
+        <property name="remark" type="string">
+            <column name="remark" />
+        </property>
+        <property name="addTime" type="timestamp">
+            <column name="add_time" />
+        </property>
+        <property name="state" type="integer">
+            <column name="state" default="0"/>
+        </property>
+        <property name="number" type="integer">
+            <column name="number"/>
+        </property>
+        <many-to-one name="product" class="com.bigJD.product.entity.Product" fetch="join" column="product_id" lazy="false"/>
+        <many-to-one name="user" class="com.bigJD.user.entity.User" column="user_id" fetch="join" lazy="proxy"/>
+    </class>
+</hibernate-mapping>

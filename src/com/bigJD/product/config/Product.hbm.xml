@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.bigJD.product.entity">
+    <class name="Product" table="t_product" >
+        <id name="id" type="integer">
+            <column name="product_id" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="string" >
+             <column name="name"/>
+         </property>
+        <property name="oldPrice" type="double" >
+             <column name="old_price"/>
+         </property>
+        <property name="barginPrice" type="double" >
+             <column name="bargin_price"/>
+         </property>
+        <property name="sales" type="integer" >
+             <column name="sales"/>
+         </property>
+        <property name="state" type="integer" >
+             <column name="state"/>
+         </property>
+        <property name="info" type="string" >
+             <column name="info" sql-type="longtext"/>
+         </property>
+        <property name="addTime" type="date" >
+             <column name="add_time" sql-type="datetime"/>
+         </property>
+        <many-to-one name="thirdCategoryProduct" class="ThirdCategoryProduct" column="third_category_product_id" lazy="false" fetch="join"></many-to-one>
+        <many-to-one name="admin" class="com.bigJD.user.entity.Admin" column="admin_id" lazy="false" fetch="join"></many-to-one>
+
+        <set name="imgs" lazy="false" cascade="save-update" order-by="id" fetch="join">
+            <key column="product_id"></key>
+            <one-to-many class="ProductImg"/>
+        </set>
+
+    </class>
+</hibernate-mapping>

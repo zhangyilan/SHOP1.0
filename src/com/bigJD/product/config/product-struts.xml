@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="product" extends="json-default">
+		<action name="product_*" class="productAction" method="{1}">
+			<result name="state" type="json">
+				<param name="root">state</param>
+			</result>
+			<result name="index">/index.jsp</result>
+			<result name="secondShow">/catalog_grid.jsp</result>
+			<result name="detail">/product_page.jsp</result>
+			<result name="upload">/admin/add_product.jsp</result>
+		</action>
+	</package>
+</struts>

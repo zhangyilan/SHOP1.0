@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.bigJD.user.entity">
+    <class name="User" table="t_user" >
+        <id name="id" type="integer">
+            <column name="user_id" />
+            <generator class="native" />
+        </id>
+    <property name="realName" type="java.lang.String" >
+        <column name="real_name"/>
+    </property>
+     <property name="userName" type="java.lang.String">
+         <column name="user_name" not-null="true"/>
+     </property>
+     <property name="password" type="java.lang.String">
+         <column name="password" not-null="true"/>
+     </property>
+     <property name="photoUrl" type="java.lang.String">
+         <column name="photo_url"/>
+     </property>
+     <property name="sex" type="java.lang.String">
+         <column name="sex"/>
+     </property>
+     <property name="phone" type="java.lang.String">
+         <column name="phone"/>
+     </property>
+     <property name="registerTime" type="java.util.Date">
+         <column name="register_time" not-null="true" sql-type="datetime"/>
+     </property>
+     <property name="state" type="java.lang.Integer">
+         <column name="state"/>
+     </property>
+     <property name="remark" type="java.lang.String">
+         <column name="remark"/>
+     </property>
+
+        <set name="addresss" lazy="extra" fetch="join" cascade="save-update" order-by="id" inverse="true">
+            <key column="user_id" />
+            <one-to-many class="Address"  />
+        </set>
+        <set name="productItems" cascade="save-update" lazy="extra" order-by="id" inverse="true" fetch="join">
+            <key column="user_id"></key>
+            <one-to-many class="com.bigJD.cart.entity.ProductItem"/>
+        </set>
+
+        <set name="collects" cascade="save-update" lazy="extra" order-by="id" inverse="true">
+            <key column="user_id"></key>
+            <one-to-many class="com.bigJD.others.entity.Collect"/>
+        </set>
+        <set name="footPrints" cascade="save-update" lazy="extra" order-by="id" inverse="true">
+            <key column="user_id"></key>
+            <one-to-many class="com.bigJD.others.entity.FootPrint"/>
+        </set>
+        <set name="bankCards" cascade="save-update" lazy="extra" order-by="id" inverse="true">
+            <key column="user_id"></key>
+            <one-to-many class="BankCard"/>
+        </set>
+    </class>
+</hibernate-mapping>

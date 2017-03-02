@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="user" extends="json-default">
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="state" type="json">
+				<param name="root">state</param>
+			</result>
+			<result name="index">/index.jsp</result>
+			<result name="user_update">/user_update.jsp</result>
+			<result name="login">/login.jsp</result>
+			<result name="userAddress">/user_address.jsp</result>
+			<result name="userBank">/user_bank_card.jsp</result>
+			<result name="adminIndex">/admin/index.jsp</result>
+			<result name="adminLogin">/admin/login.jsp</result>
+			<result name="userList">/admin/user_list.jsp</result>
+			<result name="addUser">/admin/add_user.jsp</result>
+			<result name="updateUser">/admin/update_user.jsp</result>
+		</action>
+	</package>
+</struts>

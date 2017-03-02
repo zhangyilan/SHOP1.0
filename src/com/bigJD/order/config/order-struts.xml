@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="order" extends="json-default">
+		<action name="order" class="orderAction">
+			<result name="state" type="json">
+				<param name="root">state</param>
+			</result>
+			<result name="countPrice" type="json">
+				<param name="root">countPrice</param>
+			</result>
+			<result name="pay" >pay.jsp</result>
+			<result name="orderPage" >order.jsp</result>
+			<result name="orderList" >/admin/order_list.jsp</result>
+		</action>
+	</package>
+</struts>

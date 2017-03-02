@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<package name="collect"  extends="json-default" namespace="/">
+		<action name="collect" class="collectAction">
+			<result name="state" type="json">
+				<param name="root">state</param>
+			</result>
+			<result name="findsuccess">
+				/collect.jsp
+			</result>
+		</action>
+		<action name="footprint" class="footPrintAction">
+			<result name="state" type="json">
+				<param name="root">state</param>
+			</result>
+		</action>
+		<action name="keyword" class="keyWordAction">
+			<result name="list" type="json">
+				<param name="root">productList</param>
+			</result>
+			<result name="searchResultPage">search_result.jsp</result>
+		</action>
+	</package>
+</struts>

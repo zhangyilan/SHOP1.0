@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.bigJD.user.entity">
+    <class name="Address" table="t_address" >
+        <id name="id" type="integer">
+            <column name="address_id" />
+            <generator class="native"/>
+        </id>
+    <property name="name" type="string">
+        <column name="name"/>
+    </property>
+    <property name="tell" type="string">
+        <column name="tell"/>
+    </property>
+    <property name="receipt" type="string">
+        <column name="receipt"/>
+    </property>
+    <property name="addTime" type="java.util.Date">
+        <column name="add_time" not-null="true" sql-type="datetime"/>
+    </property>
+    <many-to-one name="user" column="user_id" class="User" fetch="join" lazy="proxy"/>
+    </class>
+</hibernate-mapping>

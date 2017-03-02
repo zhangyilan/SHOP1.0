@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.bigJD.product.entity">
+    <class name="SecondCategoryProduct" table="t_second_category_product" >
+        <id name="id" type="integer">
+            <column name="second_category_product_id" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="string" >
+             <column name="name"/>
+         </property>
+        <property name="addTime" type="date" >
+             <column name="add_time" sql-type="datetime"/>
+         </property>
+        <many-to-one name="firstCategoryProduct" column="first_category_product_id" class="FirstCategoryProduct" lazy="proxy" fetch="join"></many-to-one>
+        <set name="thirdCategoryProducts" lazy="extra" cascade="save-update" fetch="join" order-by="id" inverse="true">
+            <key column="second_category_product_id" />
+            <one-to-many class="ThirdCategoryProduct"  />
+        </set>
+    </class>
+</hibernate-mapping>
